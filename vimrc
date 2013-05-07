@@ -327,7 +327,7 @@ endif
 "   pathgoen
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"runtime bundle/vim-pathogen/autoload/pathogen.vim
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 filetype off
 call pathogen#infect()
 filetype on
