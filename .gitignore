@@ -1,0 +1,7 @@
+.*.swp
+*.o
+*~
+tags
+.netrwhist
+.DS_Store
+view/
