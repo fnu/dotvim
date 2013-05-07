@@ -104,7 +104,6 @@ map ,cp :cp<cr>
 map ,cq :ccl<cr>
 
 " Quit quickly 
-map ,q :q<CR>
 map ,f :q!<CR>
 map ,z :x<CR>
 
@@ -336,6 +335,17 @@ filetype plugin indent on
 call pathogen#infect()
 call pathogen#helptags()
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+"   Fugitive.vim
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gd :Gdiff<CR>
+nnoremap <silent> <leader>gc :Gcommit<CR>
+nnoremap <silent> <leader>gl :Glog<CR>
+nnoremap <silent> <leader>gp :Git push<CR>
+
 """"""""""""""""""""""""""""""""""""""""
 "
 "   ctrlp
@@ -449,6 +459,28 @@ let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype in popup window
 let OmniCpp_GlobalScopeSearch=1
 let OmniCpp_DisplayMode=1
 let OmniCpp_DefaultNamespaces=["std"]
+
+""""""""""""""""""""""""""""""""""""""""
+"
+"   QuickFix
+"
+""""""""""""""""""""""""""""""""""""""""
+" QuickFix Window, which is borrowed from c9s
+command -bang -nargs=? QFix call QFixToggle(<bang>0)
+
+function! QFixToggle(forced)
+  if exists("g:qfix_win") && a:forced == 0
+    cclose
+    unlet g:qfix_win
+  else
+    copen 10
+    let g:qfix_win=bufnr("$")
+  endif
+endfunction
+
+nnoremap <leader>q :QFix<CR>
+
+autocmd BufWinEnter quickfix let g:qfix_win = bufnr("$")
 
 """"""""""""""""""""""""""""""""""""""""
 "
