@@ -126,7 +126,7 @@ map ,ss :setlocal spell!<cr>    " 开启关闭拼写检查
 " bash map
 nmap <silent> ,cd :lcd %:h<CR>
 nmap <silent> ,md :!mkdir -p %:p:h<CR>
-map ,g :!ctags *.c ../incldue/*.h<CR>
+map ,g :!ctags *.c ../include/*.h<CR>
 
 """"""" else map """"""""""""""
 nnoremap <leader>1 yypVr/
