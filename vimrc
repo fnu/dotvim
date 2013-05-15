@@ -126,7 +126,7 @@ map ,ss :setlocal spell!<cr>    " 开启关闭拼写检查
 " bash map
 nmap <silent> ,cd :lcd %:h<CR>
 nmap <silent> ,md :!mkdir -p %:p:h<CR>
-map ,g :!ctags *.c ../include/*.h<CR>
+map ,g :!ctags --fields=+iaS --extra=+q *.c ../include/*.h<CR> " --c++-kinds=+p
 
 """"""" else map """"""""""""""
 nnoremap <leader>1 yypVr/
@@ -168,9 +168,9 @@ set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
 "   note-taking
 "
 """"""""""""""""""""""""""""""""""""""""
-if has("autocmd")
-    autocmd bufwritepost .vimrc source $MYVIMRC
-endif
+"if has("autocmd")
+    "autocmd bufwritepost .vimrc source $MYVIMRC
+"endif
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
 " with Vim helptags and git, store things 
@@ -524,4 +524,3 @@ endif
 
 "记得上次退出时的位置
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-
