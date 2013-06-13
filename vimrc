@@ -66,9 +66,9 @@ set nowritebackup
 
 set autoread                " 当文件在外部被修改时，自动重新读取
 
-set wildmenu                    " 增强模式中的命令行自动完成操作
 set completeopt=longest,menu    " 关掉智能补全时的预览窗口
-set wildmode=longest,list,full  " tab键显示文件列表
+set wildmenu                    " 增强模式中的命令行自动完成操作
+"set wildmode=longest,list,full " tab键显示文件列表
 
 set tags=tags,~/.systags;
 "set autochdir              " 当前目录为工作目录
@@ -87,8 +87,8 @@ set tags=tags,~/.systags;
 "set listchars=tab:\|\ ,
 "set listchars=tab:▸\ ,eol:¬
 
-"set iskeyword+=_,$,@,%,#,-     "有这些符号的单词不要被换行分割 
-"set shortmess=atI              "不显启动时的信息
+"set iskeyword+=_,$,@,%,#,- "有这些符号的单词不要被换行分割 
+"set shortmess=atI          "不显启动时的信息
 "set cursorline             " 突出显示当前行
 "set showmatch              " 显示括号配对情况
 
