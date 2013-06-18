@@ -17,6 +17,7 @@
 "   => General 
 "==============================================================
 set nocompatible            " 关闭兼容模式
+set history=500             " 命令显示历史
 
 let g:mapleader = ","       " 全局设置用,代替\
 
@@ -84,8 +85,7 @@ set tags=tags,~/.systags;
 "au BufWinEnter * silent! loadview "make vim load view (state) (folds, cursor, etc))
 
 "set list                   " 显示Tab符，使用一高亮竖线代替
-"set listchars=tab:\|\ ,
-"set listchars=tab:▸\ ,eol:¬
+set listchars=tab:>-,trail:-
 
 "set iskeyword+=_,$,@,%,#,- "有这些符号的单词不要被换行分割 
 "set shortmess=atI          "不显启动时的信息
@@ -99,34 +99,38 @@ set tags=tags,~/.systags;
 """"""""""""""""""""""""""""""""""""""""
 " Cope
 "map ,cc :botright cope<cr>
-map ,cn :cn<cr>
-map ,cp :cp<cr>
-map ,cq :ccl<cr>
+map <leader>cn :cn<CR>
+map <leader>cp :cp<CR>
+map <leader>cq :ccl<CR>
 
 " Quit quickly 
-map ,f :q!<CR>
-map ,z :x<CR>
+map <leader>f :q!<CR>
+map <leader>z :x<CR>
 
 " Quick escape
-imap JJ <esc>
-imap jj <esc>
+imap JJ <ESC>
+imap jj <ESC>
 
 " Read binary
-map ,rb :%!xxd<CR>
-map ,rnb :%!xxd -r<CR>
+map <leader>rb :%!xxd<CR>
+map <leader>rnb :%!xxd -r<CR>
 
 " Buffers
 map <Tab> :bn<CR>
 map <s-Tab> :bp<CR>
-map ,bd :bd<cr>
+map <leader>bd :bd<CR>
 
-map ,pp :setlocal paste!<cr>    " 开启关闭粘贴
-map ,ss :setlocal spell!<cr>    " 开启关闭拼写检查
+map <leader>pp :setlocal paste!<CR>    " 开启关闭粘贴
+map <leader>ss :setlocal spell!<CR>    " 开启关闭拼写检查
+
+map <leader>v :vsp <c-r>=expand("%:p:h")<cr>/
 
 " bash map
-nmap <silent> ,cd :lcd %:h<CR>
-nmap <silent> ,md :!mkdir -p %:p:h<CR>
-map ,g :!ctags --fields=+iaS --extra=+q *.c ../include/*.h<CR> " --c++-kinds=+p
+nmap <silent> <leader>cd :lcd %:h<CR>
+nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
+map <leader>g :!ctags --fields=+iaS --extra=+q *.c ../include/*.h<CR> " --c++-kinds=+p
+
+map <leader>ax :!chmod a+x %<CR><CR>
 
 """"""" else map """"""""""""""
 nnoremap <leader>1 yypVr/
@@ -141,6 +145,7 @@ map <silent> <leader><cr> :noh<cr>
 nnoremap ; :
 vnoremap ; :
 
+" 在多个窗口间移动
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -171,7 +176,7 @@ set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
 "if has("autocmd")
     "autocmd bufwritepost .vimrc source $MYVIMRC
 "endif
-nmap <leader>v :tabedit $MYVIMRC<CR>
+nmap <leader>e :tabedit $MYVIMRC<CR>
 
 " with Vim helptags and git, store things 
 " $VIMRUNTIME/doc
@@ -334,6 +339,16 @@ filetype plugin on              " 针对不同的文件类型加载对应的插�
 filetype plugin indent on
 call pathogen#infect()
 call pathogen#helptags()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+"   nerdcommenter
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 空格键添加去除注释
+"map <space> <leader>ci
+map <space> <plug>NERDCommenterInvert
+"let NERDCreateDefaultMappings=0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
